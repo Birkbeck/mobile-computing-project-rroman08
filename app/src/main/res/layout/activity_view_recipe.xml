@@ -48,6 +48,41 @@
             android:textStyle="italic"
             tools:text="Lunch" />
 
+        <!-- List of ingredients -->
+        <TextView
+            android:id="@+id/text_view_ingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/ingredients"
+            android:textColor="@color/dark_grey"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/linear_layout_ingredients_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <!-- List of instructions -->
+        <TextView
+            android:id="@+id/text_view_instructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/instructions"
+            android:textColor="@color/dark_grey"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/linear_layout_instructions_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
     </LinearLayout>
 
 </ScrollView>
