@@ -13,6 +13,62 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- Sous Chef Droid header -->
+        <TextView
+            android:id="@+id/text_view_app_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="28dp"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center_horizontal"
+            android:text="@string/app_title"
+            android:textSize="32sp" />
+
+        <!-- Activity description -->
+        <TextView
+            android:id="@+id/text_view_create_recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/create_new_recipe"
+            android:textColor="@color/burgundy"
+            android:textSize="24sp" />
+
+        <!-- Recipe Name Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            android:hint="@string/recipe_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_recipe_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Category Spinner -->
+        <TextView
+            android:id="@+id/text_view_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/category"
+            android:textColor="@color/dark_grey"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+        <Spinner
+            android:id="@+id/spinner_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp" />
+
 
     </LinearLayout>
 
