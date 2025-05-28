@@ -9,4 +9,6 @@
     <string name="instructions">Instructions</string>
     <string name="add_instructions">+ add instructions</string>
     <string name="save_new_recipe">Save New Recipe</string>
+    <string name="edit_recipe">Edit Recipe</string>
+    <string name="delete_recipe">Delete Recipe</string>
 </resources>
