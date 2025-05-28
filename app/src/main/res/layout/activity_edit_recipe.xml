@@ -127,7 +127,7 @@
             android:id="@+id/button_edit_recipe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="60dp"
             android:text="@string/save_changes"
             android:textColor="@color/burgundy"
             app:backgroundTint="@color/pink" />

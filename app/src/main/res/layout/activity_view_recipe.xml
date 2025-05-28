@@ -89,7 +89,7 @@
             android:id="@+id/button_edit_recipe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="44dp"
             android:text="@string/edit_recipe"
             android:textColor="@color/burgundy"
             app:backgroundTint="@color/pink" />
