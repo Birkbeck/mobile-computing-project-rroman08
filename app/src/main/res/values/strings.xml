@@ -6,4 +6,6 @@
     <string name="category">Category</string>
     <string name="ingredients">Ingredients</string>
     <string name="add_ingredients">+ add ingredients</string>
+    <string name="instructions">Instructions</string>
+    <string name="add_instructions">+ add instructions</string>
 </resources>

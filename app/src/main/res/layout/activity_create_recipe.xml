@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="28dp" />
 
-        <!-- Ingredients section -->
+        <!-- Cooking ingredients section -->
         <TextView
             android:id="@+id/text_view_ingredients"
             android:layout_width="wrap_content"
@@ -92,6 +92,33 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/add_ingredients"
+            android:textColor="@color/burgundy"
+            app:backgroundTint="@color/pink" />
+
+        <!-- Cooking instructions section -->
+        <TextView
+            android:id="@+id/text_view_instructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/instructions"
+            android:textColor="@color/dark_grey"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/linear_layout_instructions_data_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <Button
+            android:id="@+id/button_add_instructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/add_instructions"
             android:textColor="@color/burgundy"
             app:backgroundTint="@color/pink" />
 
