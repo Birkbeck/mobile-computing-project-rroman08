@@ -51,7 +51,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Category spinner -->
+        <!-- Category selection spinner -->
         <TextView
             android:id="@+id/text_view_category"
             android:layout_width="wrap_content"
@@ -121,6 +121,14 @@
             android:text="@string/add_instructions"
             android:textColor="@color/burgundy"
             app:backgroundTint="@color/pink" />
+
+        <!-- Save new recipe button -->
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="@string/save_new_recipe" />
 
     </LinearLayout>
 

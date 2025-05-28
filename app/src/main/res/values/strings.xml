@@ -8,4 +8,5 @@
     <string name="add_ingredients">+ add ingredients</string>
     <string name="instructions">Instructions</string>
     <string name="add_instructions">+ add instructions</string>
+    <string name="save_new_recipe">Save New Recipe</string>
 </resources>
