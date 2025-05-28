@@ -4,4 +4,6 @@
     <string name="create_new_recipe">Create New Recipe</string>
     <string name="recipe_title">Recipe Title</string>
     <string name="category">Category</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="add_ingredients">+ add ingredients</string>
 </resources>

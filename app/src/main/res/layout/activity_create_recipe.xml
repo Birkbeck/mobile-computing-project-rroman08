@@ -30,13 +30,13 @@
             android:id="@+id/text_view_create_recipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="28dp"
+            android:layout_marginBottom="20dp"
             android:fontFamily="sans-serif-black"
             android:text="@string/create_new_recipe"
             android:textColor="@color/burgundy"
             android:textSize="24sp" />
 
-        <!-- Recipe Name Input -->
+        <!-- Recipe name input -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Category Spinner -->
+        <!-- Category spinner -->
         <TextView
             android:id="@+id/text_view_category"
             android:layout_width="wrap_content"
@@ -69,6 +69,31 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="28dp" />
 
+        <!-- Ingredients section -->
+        <TextView
+            android:id="@+id/text_view_ingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/ingredients"
+            android:textColor="@color/dark_grey"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/linear_layout_ingredients_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <Button
+            android:id="@+id/button_add_ingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/add_ingredients"
+            android:textColor="@color/burgundy"
+            app:backgroundTint="@color/pink" />
 
     </LinearLayout>
 
