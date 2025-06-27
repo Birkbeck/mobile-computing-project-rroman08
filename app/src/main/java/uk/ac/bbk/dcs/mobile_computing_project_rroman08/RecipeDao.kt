@@ -10,23 +10,23 @@ import androidx.room.Update
 interface RecipeDao {
     // Get all recipes ordered by title
     @Query("SELECT * FROM recipes ORDER BY title ASC")
-    fun getAllRecipes(): List<RecipeEntity>
+    fun getAllRecipes(): List<Recipe>
 
     // Retrieve a recipe by ID from db
     @Query("SELECT * FROM recipes WHERE id = :id")
-    suspend fun getRecipeById(id: Int): RecipeEntity?
+    suspend fun getRecipeById(id: Int): Recipe?
 
     // Insert a new recipe into db
     @Insert()
-    suspend fun insertRecipe(recipe: RecipeEntity)
+    suspend fun insertRecipe(recipe: Recipe)
 
     // Update an existing recipe currently in db
     @Update
-    suspend fun updateRecipe(recipe: RecipeEntity)
+    suspend fun updateRecipe(recipe: Recipe)
 
     // Delete a recipe from db
     @Delete
-    suspend fun deleteRecipe(recipe: RecipeEntity)
+    suspend fun deleteRecipe(recipe: Recipe)
 
     // IMPLEMENT LATER IN UI, IF THERE IS TIME REMAINING
     // Optional: Get recipes by category

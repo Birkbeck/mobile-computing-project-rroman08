@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import java.io.Serializable
 
 @Entity(tableName = "recipes")
-data class RecipeEntity(
+data class Recipe(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val title: String,
