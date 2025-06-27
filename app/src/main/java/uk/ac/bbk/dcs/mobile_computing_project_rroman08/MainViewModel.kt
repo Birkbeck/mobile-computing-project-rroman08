@@ -7,7 +7,21 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class MainViewModel {
+class MainViewModel : ViewModel() {
 
+    private val _recipes = MutableLiveData(listOf<Recipe>())
+    val recipes: LiveData<List<Recipe>> = _recipes
 
+    var recipeDao: RecipeDao? = null
+
+    fun readAllRecipes() {
+        viewModelScope.launch {
+            recipeDao?.let {
+                val expenses = it.getAllRecipes()
+
+                Log.i("BBK", expenses.toString())
+                _recipes.value = expenses
+            }
+        }
+    }
 }
