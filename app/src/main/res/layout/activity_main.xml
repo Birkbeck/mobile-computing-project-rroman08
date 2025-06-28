@@ -42,7 +42,7 @@
             android:id="@+id/recycler_view_data"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            tools:listitem="@layout/recipe_item_view" />
+            tools:listitem="@layout/recipe_item" />
 
     </LinearLayout>
 
