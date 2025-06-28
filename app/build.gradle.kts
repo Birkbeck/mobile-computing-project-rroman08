@@ -2,15 +2,15 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
-    namespace = "gr.gkortsaridis.mobilecomputingdemolab08"
+    namespace = "uk.ac.bbk.dcs.mobile_computing_project_rroman08"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "gr.gkortsaridis.mobilecomputingdemolab08"
+        applicationId = "uk.ac.bbk.dcs.mobile_computing_project_rroman08"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -54,7 +54,5 @@ dependencies {
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
-    annotationProcessor("androidx.room:room-compiler:2.6.1")
-    implementation("androidx.room:room-ktx:2.6.1")
-
+//    annotationProcessor("androidx.room:room-compiler:2.6.1")
 }

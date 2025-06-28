@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.activity.viewModels
-import gr.gkortsaridis.mobilecomputingdemolab08.databinding.ActivityMainBinding
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,8 +25,9 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        binding.recyclerViewData
-        binding.buttonCreateRecipe
+        val adapter = RecipeAdapter()
+        binding.recyclerViewData.adapter = adapter
+//        binding.buttonCreateRecipe
 
         val dao = RecipeDatabase.getInstance(applicationContext).recipeDao()
         viewModel.recipeDao = dao

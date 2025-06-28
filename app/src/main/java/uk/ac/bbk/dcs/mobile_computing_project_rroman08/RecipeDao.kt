@@ -10,7 +10,7 @@ import androidx.room.Update
 interface RecipeDao {
     // Get all recipes ordered by title
     @Query("SELECT * FROM recipes ORDER BY title ASC")
-    fun getAllRecipes(): List<Recipe>
+    suspend fun getAllRecipes(): List<Recipe>
 
     // Retrieve a recipe by ID from db
     @Query("SELECT * FROM recipes WHERE id = :id")
