@@ -1,43 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white_pink"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Sous Chef Droid header -->
-    <TextView
-        android:id="@+id/text_view_app_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="28dp"
-        android:fontFamily="sans-serif-black"
-        android:gravity="center_horizontal"
-        android:text="@string/app_title"
-        android:textSize="32sp" />
+    <data></data>
 
-    <!-- Create new recipe button -->
-    <Button
-        android:id="@+id/button_delete_recipe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:text="@string/create_new_recipe"
-        android:textColor="@color/burgundy"
-        app:backgroundTint="@color/pink" />
-
-    <!-- RecyclerView for all recipes saved on app -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_data"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:background="@color/white_pink"
+        android:gravity="center"
+        android:id="@+id/main"
         android:layout_height="match_parent"
-        tools:listitem="@layout/recipe_item_view" />
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-</LinearLayout>
+        <!-- Sous Chef Droid header -->
+        <TextView
+            android:fontFamily="sans-serif-black"
+            android:gravity="center_horizontal"
+            android:id="@+id/text_view_app_title"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:text="@string/app_title"
+            android:textSize="32sp" />
+
+        <!-- Create new recipe button -->
+        <Button
+            android:id="@+id/button_create_recipe"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_width="wrap_content"
+            android:text="@string/create_new_recipe"
+            android:textColor="@color/burgundy"
+            app:backgroundTint="@color/pink" />
+
+        <!-- RecyclerView for all recipes saved on app -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_data"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            tools:listitem="@layout/recipe_item_view" />
+
+    </LinearLayout>
+
+</layout>
