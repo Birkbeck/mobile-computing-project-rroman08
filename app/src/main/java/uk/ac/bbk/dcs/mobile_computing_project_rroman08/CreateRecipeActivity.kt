@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import android.graphics.Color
+import android.view.Gravity
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.LinearLayout
@@ -12,6 +13,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeCategory
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityCreateRecipeBinding
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.dp
 
 class CreateRecipeActivity : AppCompatActivity() {
 
@@ -84,12 +86,15 @@ class CreateRecipeActivity : AppCompatActivity() {
     private fun createItemView(text: String, onDelete: () -> Unit): LinearLayout {
         val layout = LinearLayout(this).apply {
             orientation = LinearLayout.HORIZONTAL
+            gravity = Gravity.CENTER
             val params = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
-            )
-            params.setMargins(0, 8, 0, 8)
-            layoutParams = params
+            ).apply {
+                setMargins(0, 4.dp, 0, 4.dp)
+            }
+//            params.setMargins(0, 8, 0, 8)
+//            layoutParams = params
         }
 
         val textView = TextView(this).apply {
@@ -104,7 +109,9 @@ class CreateRecipeActivity : AppCompatActivity() {
             layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
-            )
+            ).apply {
+                marginStart = 8.dp
+            }
             setOnClickListener { onDelete() }
         }
 
