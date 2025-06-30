@@ -5,8 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.RecipeItemBinding
 
-class RecipeAdapter(private var recipes: List<Recipe> = listOf()) :
-    RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
+class RecipeAdapter(
+    private var recipes: List<Recipe> = listOf(),
+    private val onViewClick: (Long) -> Unit
+) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
         val binding = RecipeItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -31,6 +33,11 @@ class RecipeAdapter(private var recipes: List<Recipe> = listOf()) :
         fun bind(recipe: Recipe) {
             binding.recipe = recipe
             binding.executePendingBindings()
+
+            // Set up button click listener for items
+            binding.buttonSeeRecipe.setOnClickListener {
+                onViewClick(recipe.id)
+            }
         }
     }
 }
