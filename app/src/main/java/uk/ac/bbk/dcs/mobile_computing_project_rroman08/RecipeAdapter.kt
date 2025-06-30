@@ -28,8 +28,10 @@ class RecipeAdapter(
         notifyDataSetChanged()
     }
 
-    inner class RecipeViewHolder(private val binding: RecipeItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class RecipeViewHolder(
+        private val binding: RecipeItemBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(recipe: Recipe) {
             binding.recipe = recipe
             binding.executePendingBindings()

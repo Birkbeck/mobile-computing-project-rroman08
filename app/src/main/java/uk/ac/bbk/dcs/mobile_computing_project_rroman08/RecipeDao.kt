@@ -14,7 +14,7 @@ interface RecipeDao {
 
     // Retrieve a recipe by ID from db
     @Query("SELECT * FROM recipes WHERE id = :id")
-    suspend fun getRecipeById(id: Int): Recipe?
+    suspend fun getRecipeById(id: Long): Recipe?
 
     // Insert a new recipe into db
     @Insert()
