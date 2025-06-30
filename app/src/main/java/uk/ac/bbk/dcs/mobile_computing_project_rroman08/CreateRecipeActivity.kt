@@ -1,19 +1,13 @@
 package uk.ac.bbk.dcs.mobile_computing_project_rroman08
 
-import androidx.activity.viewModels
 import android.os.Bundle
-import android.widget.ArrayAdapter
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import android.graphics.Color
-import android.view.Gravity
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
+import android.widget.ArrayAdapter
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeCategory
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityCreateRecipeBinding
-import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.dp
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.createItemView
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.showInputDialog
 
 class CreateRecipeActivity : AppCompatActivity() {
 
@@ -25,117 +19,43 @@ class CreateRecipeActivity : AppCompatActivity() {
         binding = ActivityCreateRecipeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Populate the spinner with enum values
+        // Setup spinner
         val categories = RecipeCategory.entries
-        val adapter = ArrayAdapter(
-            this,
-            android.R.layout.simple_spinner_item,
-            categories
-        )
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categories)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerCategory.adapter = adapter
 
-        // Observe ingredients list
-        viewModel.ingredients.observe(this) { ingredients ->
-            updateIngredientViews(ingredients)
+        // Observe ingredients and instructions
+        viewModel.ingredients.observe(this) {
+            updateListViews(it, binding.linearLayoutIngredientsData) { ingredient ->
+                viewModel.removeIngredient(ingredient)
+            }
         }
 
-        // Observe instructions list
-        viewModel.instructions.observe(this) { instructions ->
-            updateInstructionViews(instructions)
+        viewModel.instructions.observe(this) {
+            updateListViews(it, binding.linearLayoutInstructionsDataContainer) { instruction ->
+                viewModel.removeInstruction(instruction)
+            }
         }
 
         binding.buttonAddIngredients.setOnClickListener {
-            showInputDialog("Add Ingredient") { input ->
-                viewModel.addIngredient(input)
-            }
+            showInputDialog("Add Ingredient") { viewModel.addIngredient(it) }
         }
 
         binding.buttonAddInstructions.setOnClickListener {
-            showInputDialog("Add Instruction") { input ->
-                viewModel.addInstruction(input)
-            }
+            showInputDialog("Add Instruction") { viewModel.addInstruction(it) }
         }
     }
 
-    private fun updateIngredientViews(ingredients: List<String>) {
-        val container = binding.linearLayoutIngredientsData
+    private fun updateListViews(
+        items: List<String>,
+        container: android.widget.LinearLayout,
+        onDelete: (String) -> Unit
+    ) {
         container.removeAllViews()
-
-        ingredients.forEach { ingredient ->
-            val view = createItemView(ingredient) {
-                viewModel.removeIngredient(ingredient)
-            }
+        items.forEach { item ->
+            val view = createItemView(item) { onDelete(item) }
             container.addView(view)
         }
-    }
-
-    private fun updateInstructionViews(instructions: List<String>) {
-        val container = binding.linearLayoutInstructionsDataContainer
-        container.removeAllViews()
-
-        instructions.forEach { instruction ->
-            val view = createItemView(instruction) {
-                viewModel.removeInstruction(instruction)
-            }
-            container.addView(view)
-        }
-    }
-
-    // Create a horizontal layout with text + delete button
-    private fun createItemView(text: String, onDelete: () -> Unit): LinearLayout {
-        val layout = LinearLayout(this).apply {
-            orientation = LinearLayout.HORIZONTAL
-            gravity = Gravity.CENTER
-            val params = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            ).apply {
-                setMargins(0, 4.dp, 0, 4.dp)
-            }
-//            params.setMargins(0, 8, 0, 8)
-//            layoutParams = params
-        }
-
-        val textView = TextView(this).apply {
-            this.text = text
-            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
-            textSize = 16f
-        }
-
-        val deleteButton = ImageButton(this).apply {
-            setImageResource(R.drawable.ic_bin_grey)
-            setBackgroundColor(Color.TRANSPARENT)
-            layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            ).apply {
-                marginStart = 8.dp
-            }
-            setOnClickListener { onDelete() }
-        }
-
-        layout.addView(textView)
-        layout.addView(deleteButton)
-
-        return layout
-    }
-
-    // Input dialog for adding ingredients or instructions
-    private fun showInputDialog(title: String, onInputConfirmed: (String) -> Unit) {
-        val editText = EditText(this)
-
-        AlertDialog.Builder(this)
-            .setTitle(title)
-            .setView(editText)
-            .setPositiveButton("Add") { dialog, _ ->
-                val input = editText.text.toString().trim()
-                if (input.isNotEmpty()) {
-                    onInputConfirmed(input)
-                }
-                dialog.dismiss()
-            }
-            .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
-            .show()
     }
 }
