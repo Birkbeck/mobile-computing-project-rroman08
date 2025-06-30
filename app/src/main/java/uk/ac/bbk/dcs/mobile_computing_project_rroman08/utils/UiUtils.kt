@@ -23,7 +23,12 @@ fun Context.createItemView(text: String, onDelete: () -> Unit): LinearLayout {
 
         val textView = TextView(context).apply {
             this.text = text
-            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
+            layoutParams = LinearLayout.LayoutParams(
+                0,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply {
+                weight = 1f
+            }
             textSize = 16f
         }
 
