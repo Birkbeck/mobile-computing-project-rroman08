@@ -1,6 +1,7 @@
-package uk.ac.bbk.dcs.mobile_computing_project_rroman08
+package uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.converters
 
 import androidx.room.TypeConverter
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeCategory
 
 class Converters {
     // My List<String> to String converter

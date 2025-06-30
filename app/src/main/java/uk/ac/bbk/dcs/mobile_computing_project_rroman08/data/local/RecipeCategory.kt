@@ -1,4 +1,4 @@
-package uk.ac.bbk.dcs.mobile_computing_project_rroman08
+package uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local
 
 enum class RecipeCategory {
     BREAKFAST,

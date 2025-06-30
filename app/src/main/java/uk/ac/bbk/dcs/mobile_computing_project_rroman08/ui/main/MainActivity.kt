@@ -1,4 +1,4 @@
-package uk.ac.bbk.dcs.mobile_computing_project_rroman08
+package uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.activity.viewModels
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.display.DisplayRecipeActivity
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.main.RecipeAdapter
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDatabase
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityMainBinding
 
 
@@ -30,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         // Adapter with click listener to launch ViewRecipeActivity
         val adapter = RecipeAdapter { id ->
-            val intent = Intent(this, ViewRecipeActivity::class.java)
+            val intent = Intent(this, DisplayRecipeActivity::class.java)
             intent.putExtra("RECIPE_ID", id)
             startActivity(intent)
         }

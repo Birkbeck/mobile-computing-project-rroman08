@@ -1,10 +1,11 @@
-package uk.ac.bbk.dcs.mobile_computing_project_rroman08
+package uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.Recipe
 
 @Dao
 interface RecipeDao {

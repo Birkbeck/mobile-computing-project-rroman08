@@ -7,7 +7,7 @@
 
         <variable
             name="recipe"
-            type="uk.ac.bbk.dcs.mobile_computing_project_rroman08.Recipe" />
+            type="uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.Recipe" />
     </data>
 
     <ScrollView

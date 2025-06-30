@@ -1,4 +1,4 @@
-package uk.ac.bbk.dcs.mobile_computing_project_rroman08
+package uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.display
 
 import android.util.Log
 import android.os.Bundle
@@ -9,18 +9,20 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityViewRecipeBinding
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.R
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDatabase
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityDisplayRecipeBinding
 
-class ViewRecipeActivity : AppCompatActivity() {
+class DisplayRecipeActivity : AppCompatActivity() {
 
-    private val viewModel: ViewRecipeViewModel by viewModels()
-    private lateinit var binding: ActivityViewRecipeBinding
+    private val viewModel: DisplayRecipeViewModel by viewModels()
+    private lateinit var binding: ActivityDisplayRecipeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        binding = ActivityViewRecipeBinding.inflate(layoutInflater)
+        binding = ActivityDisplayRecipeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->

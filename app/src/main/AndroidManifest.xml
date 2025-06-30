@@ -16,13 +16,13 @@
             android:name=".EditRecipeActivity"
             android:exported="false" />
         <activity
-            android:name=".ViewRecipeActivity"
+            android:name=".ui.display.DisplayRecipeActivity"
             android:exported="false" />
         <activity
             android:name=".CreateRecipeActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

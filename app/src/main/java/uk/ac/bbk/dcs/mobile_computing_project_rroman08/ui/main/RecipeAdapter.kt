@@ -1,8 +1,9 @@
-package uk.ac.bbk.dcs.mobile_computing_project_rroman08
+package uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.Recipe
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.RecipeItemBinding
 
 class RecipeAdapter(
