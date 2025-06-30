@@ -2,11 +2,8 @@ package uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.CreateRecipeActivity
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDatabase
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityMainBinding

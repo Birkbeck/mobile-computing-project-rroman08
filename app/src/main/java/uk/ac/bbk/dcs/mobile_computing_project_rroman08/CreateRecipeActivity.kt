@@ -5,6 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.ArrayAdapter
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeCategory
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDatabase
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityCreateRecipeBinding
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.createItemView
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.showInputDialog
@@ -24,6 +25,18 @@ class CreateRecipeActivity : AppCompatActivity() {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categories)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerCategory.adapter = adapter
+
+        val dao = RecipeDatabase.getInstance(applicationContext).recipeDao()
+        viewModel.recipeDao = dao
+
+        // Add this Save button click listener near the end of onCreate
+        binding.saveButton.setOnClickListener {
+            viewModel.title.value = binding.editTextRecipeTitle.text.toString()
+            viewModel.category.value = binding.spinnerCategory.selectedItem as RecipeCategory
+            viewModel.saveRecipe()
+
+            finish()
+        }
 
         // Observe ingredients and instructions
         viewModel.ingredients.observe(this) {
