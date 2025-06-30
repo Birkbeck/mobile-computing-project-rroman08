@@ -1,8 +1,14 @@
 package uk.ac.bbk.dcs.mobile_computing_project_rroman08
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.Recipe
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeCategory
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDao
 
 class CreateRecipeViewModel : ViewModel() {
 
@@ -11,6 +17,28 @@ class CreateRecipeViewModel : ViewModel() {
 
     private val _instructions = MutableLiveData<List<String>>(emptyList())
     val instructions: LiveData<List<String>> = _instructions
+    val title = MutableLiveData<String>()
+    val category = MutableLiveData<RecipeCategory>()
+
+    var recipeDao: RecipeDao? = null
+
+    fun saveRecipe() {
+        val currentTitle = title.value ?: return
+        val currentCategory = category.value ?: return
+        val currentIngredients = _ingredients.value ?: emptyList()
+        val currentInstructions = _instructions.value ?: emptyList()
+
+        val recipe = Recipe(
+            title = currentTitle,
+            category = currentCategory,
+            ingredients = currentIngredients,
+            instructions = currentInstructions
+        )
+
+        viewModelScope.launch {
+            recipeDao?.insertRecipe(recipe)
+        }
+    }
 
     // Add ingredient
     fun addIngredient(ingredient: String) {
