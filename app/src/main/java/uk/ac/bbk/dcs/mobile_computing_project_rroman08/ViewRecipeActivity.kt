@@ -1,7 +1,9 @@
 package uk.ac.bbk.dcs.mobile_computing_project_rroman08
 
-//import android.util.log
+import android.util.Log
 import android.os.Bundle
+import android.widget.TextView
+import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -27,18 +29,41 @@ class ViewRecipeActivity : AppCompatActivity() {
             insets
         }
 
-        val recipeId = intent.getLongExtra("RECIPE_ID", -1L)
+        // Inject DAO
+        val dao = RecipeDatabase.getInstance(applicationContext).recipeDao()
+        viewModel.recipeDao = dao
 
+        val recipeId = intent.getLongExtra("RECIPE_ID", -1L)
         if (recipeId != -1L) {
             // Use ViewModel to read recipe from database with given id
             viewModel.readRecipeById(recipeId)
         } else {
-//            Long.e("ViewRecipeActivity", "Invalid recipe ID: $recipeId")
+            Log.e("ViewRecipeActivity", "Invalid recipe ID: $recipeId")
+            finish() // << exit early so no null data is bound??>>>
         }
 
         // Observe LiveData and bind recipe to the view
         viewModel.recipe.observe(this) { recipe ->
-            binding.recipe = recipe
+            if (recipe != null) {
+                binding.recipe = recipe
+                populateList(binding.linearLayoutIngredientsData, recipe.ingredients)
+                populateList(binding.linearLayoutInstructionsData, recipe.instructions)
+            } else {
+                Log.e("ViewRecipeActivity", "Recipe was null")
+            }
+        }
+    }
+
+    private fun populateList(container: LinearLayout, list: List<String>) {
+        container.removeAllViews()
+        list.forEachIndexed { index, item ->
+            val textView = TextView(this).apply {
+                text = "${index + 1}. $item"
+                textSize = 16f
+                setTextColor(resources.getColor(R.color.dark_grey, theme))
+                setPadding(0, 4, 0, 4)
+            }
+            container.addView(textView)
         }
     }
 }
