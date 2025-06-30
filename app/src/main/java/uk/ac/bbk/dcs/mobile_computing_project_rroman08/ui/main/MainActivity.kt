@@ -3,14 +3,13 @@ package uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.main
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.activity.viewModels
-import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.display.DisplayRecipeActivity
-import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.main.RecipeAdapter
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDatabase
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityMainBinding
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.display.DisplayRecipeActivity
 
 
 class MainActivity : AppCompatActivity() {
