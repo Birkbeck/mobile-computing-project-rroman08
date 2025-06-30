@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.CreateRecipeActivity
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDatabase
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityMainBinding
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.display.DisplayRecipeActivity
@@ -38,9 +39,10 @@ class MainActivity : AppCompatActivity() {
         }
         binding.recyclerViewData.adapter = adapter
 
-        // Create recipe button (NOT IMPLEMENTED YET)
+        // Create recipe button navigates to other activity
         binding.buttonCreateRecipe.setOnClickListener {
-            // TODO: Navigate to CreateRecipeActivity
+            val intent = Intent(this, CreateRecipeActivity::class.java)
+            startActivity(intent)
         }
 
         val dao = RecipeDatabase.getInstance(applicationContext).recipeDao()

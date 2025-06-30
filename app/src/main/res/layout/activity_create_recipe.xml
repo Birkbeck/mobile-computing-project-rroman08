@@ -1,135 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white_pink"
-    android:padding="16dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:id="@+id/linear_layout_scrollview"
+    <data></data>
+
+    <ScrollView
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:background="@color/white_pink"
+        android:padding="16dp">
 
-        <!-- Sous Chef Droid header -->
-        <TextView
-            android:id="@+id/text_view_app_title"
+        <LinearLayout
+            android:id="@+id/linear_layout_scrollview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="28dp"
-            android:fontFamily="sans-serif-black"
-            android:gravity="center_horizontal"
-            android:text="@string/app_title"
-            android:textSize="32sp" />
+            android:orientation="vertical">
 
-        <!-- Activity description -->
-        <TextView
-            android:id="@+id/text_view_create_recipe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="sans-serif-black"
-            android:text="@string/create_new_recipe"
-            android:textColor="@color/burgundy"
-            android:textSize="24sp" />
-
-        <!-- Recipe name input -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="28dp"
-            android:hint="@string/recipe_title">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_text_recipe_title"
+            <!-- Sous Chef Droid header -->
+            <TextView
+                android:id="@+id/text_view_app_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapWords" />
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="28dp"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center_horizontal"
+                android:text="@string/app_title"
+                android:textSize="32sp" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            <!-- Activity description -->
+            <TextView
+                android:id="@+id/text_view_create_recipe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="sans-serif-black"
+                android:text="@string/create_new_recipe"
+                android:textColor="@color/burgundy"
+                android:textSize="24sp" />
 
-        <!-- Category selection spinner -->
-        <TextView
-            android:id="@+id/text_view_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="sans-serif-light"
-            android:text="@string/category"
-            android:textColor="@color/dark_grey"
-            android:textSize="20sp"
-            android:textStyle="italic" />
+            <!-- Recipe name input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp"
+                android:hint="@string/recipe_title">
 
-        <Spinner
-            android:id="@+id/spinner_category"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="28dp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_recipe_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords" />
 
-        <!-- Cooking ingredients section -->
-        <TextView
-            android:id="@+id/text_view_ingredients"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/ingredients"
-            android:textColor="@color/dark_grey"
-            android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout
-            android:id="@+id/linear_layout_ingredients_data"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            <!-- Category selection spinner -->
+            <TextView
+                android:id="@+id/text_view_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/category"
+                android:textColor="@color/dark_grey"
+                android:textSize="20sp"
+                android:textStyle="italic" />
 
-        <Button
-            android:id="@+id/button_add_ingredients"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/add_ingredients"
-            android:textColor="@color/burgundy"
-            app:backgroundTint="@color/pink" />
+            <Spinner
+                android:id="@+id/spinner_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp" />
 
-        <!-- Cooking instructions section -->
-        <TextView
-            android:id="@+id/text_view_instructions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/instructions"
-            android:textColor="@color/dark_grey"
-            android:textSize="20sp" />
+            <!-- Cooking ingredients section -->
+            <TextView
+                android:id="@+id/text_view_ingredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/ingredients"
+                android:textColor="@color/dark_grey"
+                android:textSize="20sp" />
 
-        <LinearLayout
-            android:id="@+id/linear_layout_instructions_data_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            <LinearLayout
+                android:id="@+id/linear_layout_ingredients_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
 
-        <Button
-            android:id="@+id/button_add_instructions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/add_instructions"
-            android:textColor="@color/burgundy"
-            app:backgroundTint="@color/pink" />
+            <Button
+                android:id="@+id/button_add_ingredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/add_ingredients"
+                android:textColor="@color/burgundy"
+                app:backgroundTint="@color/pink" />
 
-        <!-- Save new recipe button -->
-        <Button
-            android:id="@+id/saveButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:text="@string/save_new_recipe" />
+            <!-- Cooking instructions section -->
+            <TextView
+                android:id="@+id/text_view_instructions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/instructions"
+                android:textColor="@color/dark_grey"
+                android:textSize="20sp" />
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear_layout_instructions_data_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
 
-</ScrollView>
+            <Button
+                android:id="@+id/button_add_instructions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/add_instructions"
+                android:textColor="@color/burgundy"
+                app:backgroundTint="@color/pink" />
+
+            <!-- Save new recipe button -->
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="@string/save_new_recipe" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>
