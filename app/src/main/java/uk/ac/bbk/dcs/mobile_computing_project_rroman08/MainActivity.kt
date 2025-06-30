@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         val adapter = RecipeAdapter()
         binding.recyclerViewData.adapter = adapter
-//        binding.buttonCreateRecipe
+        binding.buttonCreateRecipe
 
         val dao = RecipeDatabase.getInstance(applicationContext).recipeDao()
         viewModel.recipeDao = dao

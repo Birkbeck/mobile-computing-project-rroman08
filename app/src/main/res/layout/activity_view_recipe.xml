@@ -1,107 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white_pink"
-    android:padding="16dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:id="@+id/linear_layout_scrollview"
+    <data>
+
+        <variable
+            name="recipe"
+            type="uk.ac.bbk.dcs.mobile_computing_project_rroman08.Recipe" />
+    </data>
+
+    <ScrollView
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <!-- Sous Chef Droid header -->
-        <TextView
-            android:id="@+id/text_view_app_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="28dp"
-            android:fontFamily="sans-serif-black"
-            android:gravity="center_horizontal"
-            android:text="@string/app_title"
-            android:textSize="32sp" />
-
-        <!-- Recipe title -->
-        <TextView
-            android:id="@+id/text_view_recipe_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="sans-serif-black"
-            android:textColor="@color/burgundy"
-            android:textSize="24sp"
-            tools:text="Mountain Goat Curry" />
-
-        <!-- Recipe category -->
-        <TextView
-            android:id="@+id/text_view_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/dark_grey"
-            android:textSize="16sp"
-            android:textStyle="italic"
-            tools:text="Lunch" />
-
-        <!-- List of ingredients section -->
-        <TextView
-            android:id="@+id/text_view_ingredients"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/ingredients"
-            android:textColor="@color/dark_grey"
-            android:textSize="20sp" />
+        android:layout_height="match_parent"
+        android:background="@color/white_pink"
+        android:padding="16dp">
 
         <LinearLayout
-            android:id="@+id/linear_layout_ingredients_data"
+            android:id="@+id/linear_layout_scrollview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical">
 
-        <!-- List of instructions section -->
-        <TextView
-            android:id="@+id/text_view_instructions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/instructions"
-            android:textColor="@color/dark_grey"
-            android:textSize="20sp" />
+            <!-- Sous Chef Droid header -->
+            <TextView
+                android:id="@+id/text_view_app_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="28dp"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center_horizontal"
+                android:text="@string/app_title"
+                android:textSize="32sp" />
 
-        <LinearLayout
-            android:id="@+id/linear_layout_instructions_data"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            <!-- Recipe title -->
+            <TextView
+                android:id="@+id/text_view_recipe_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif-black"
+                android:text="@{recipe.title}"
+                android:textColor="@color/burgundy"
+                android:textSize="24sp"
+                tools:text="Mountain Goat Curry" />
 
-        <!-- Edit recipe button -->
-        <Button
-            android:id="@+id/button_edit_recipe"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
-            android:text="@string/edit_recipe"
-            android:textColor="@color/burgundy"
-            app:backgroundTint="@color/pink" />
+            <!-- Recipe category -->
+            <TextView
+                android:id="@+id/text_view_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:fontFamily="sans-serif-light"
+                android:text="@{recipe.category}"
+                android:textColor="@color/dark_grey"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                tools:text="Lunch" />
 
-        <!-- Delete recipe button -->
-        <Button
-            android:id="@+id/button_delete_recipe"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/delete_recipe" />
+            <!-- List of ingredients section -->
+            <TextView
+                android:id="@+id/text_view_ingredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/ingredients"
+                android:textColor="@color/dark_grey"
+                android:textSize="20sp" />
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear_layout_ingredients_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
 
-</ScrollView>
+            <!-- List of instructions section -->
+            <TextView
+                android:id="@+id/text_view_instructions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/instructions"
+                android:textColor="@color/dark_grey"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/linear_layout_instructions_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <!-- Edit recipe button -->
+            <Button
+                android:id="@+id/button_edit_recipe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:text="@string/edit_recipe"
+                android:textColor="@color/burgundy"
+                app:backgroundTint="@color/pink" />
+
+            <!-- Delete recipe button -->
+            <Button
+                android:id="@+id/button_delete_recipe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/delete_recipe" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>
