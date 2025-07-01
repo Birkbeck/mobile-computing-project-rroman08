@@ -37,6 +37,7 @@ class CreateRecipeViewModel : ViewModel() {
 
         viewModelScope.launch {
             recipeDao?.insertRecipe(recipe)
+            Log.d("CreateRecipeViewModel", "Saved recipe: $recipe")
         }
     }
 

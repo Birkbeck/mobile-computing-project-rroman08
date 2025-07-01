@@ -42,4 +42,9 @@ class MainActivity : AppCompatActivity() {
             adapter.updateRecipes(recipes)
         }
     }
+
+//    override fun onResume() {
+//        super.onResume()
+//        viewModel.readAllRecipes()
+//    }
 }

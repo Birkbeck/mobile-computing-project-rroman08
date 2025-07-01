@@ -19,11 +19,13 @@ class MainViewModel : ViewModel() {
     fun readAllRecipes() {
         viewModelScope.launch {
             recipeDao?.let {
-                val expenses = it.getAllRecipes()
-
-                Log.i("BBK", expenses.toString())
-                _recipes.value = expenses
-            }
+                val recipesList = it.getAllRecipes()
+                Log.i("MainViewModel", "Fetched ${recipesList.size} recipes from DB")
+                recipesList.forEach { recipe ->
+                    Log.d("MainViewModel", recipe.toString())
+                }
+                _recipes.value = recipesList
+            } ?: Log.w("MainViewModel", "RecipeDao is null, cannot fetch recipes")
         }
     }
 }
