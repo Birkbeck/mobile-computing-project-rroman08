@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.CreateRecipeActivity
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDatabase
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityMainBinding
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("RECIPE_ID", id)
             startActivity(intent)
         }
+        binding.recyclerViewData.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewData.adapter = adapter
 
         // Create recipe button navigates to other activity
