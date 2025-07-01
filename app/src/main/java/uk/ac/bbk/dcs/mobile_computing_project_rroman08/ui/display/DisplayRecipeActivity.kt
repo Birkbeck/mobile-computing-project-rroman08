@@ -7,6 +7,8 @@ import android.widget.LinearLayout
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.R
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.Recipe
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeCategory
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDatabase
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityDisplayRecipeBinding
 
@@ -19,6 +21,15 @@ class DisplayRecipeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDisplayRecipeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Empty placeholder recipe to avoid null binding crash
+        binding.recipe = Recipe(
+            id = 0,
+            title = "",
+            category = RecipeCategory.OTHER,
+            ingredients = emptyList(),
+            instructions = emptyList()
+        )
 
         // Inject DAO
         val dao = RecipeDatabase.getInstance(applicationContext).recipeDao()
