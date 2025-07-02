@@ -9,6 +9,7 @@ import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.Recipe
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeCategory
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDatabase
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityDisplayRecipeBinding
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.edit.EditRecipeActivity
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.main.MainActivity
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.populateList
 
@@ -53,6 +54,13 @@ class DisplayRecipeActivity : AppCompatActivity() {
             } else {
                 Log.e("ViewRecipeActivity", "Recipe was null")
             }
+        }
+
+        // Edit/update button logic
+        binding.buttonEditRecipe.setOnClickListener {
+            val intent = Intent(this, EditRecipeActivity::class.java)
+            intent.putExtra("RECIPE_ID", recipeId) // Use the same ID
+            startActivity(intent)
         }
 
         // Delete button logic

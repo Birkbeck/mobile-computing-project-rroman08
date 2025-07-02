@@ -37,7 +37,39 @@ class EditRecipeViewModel : ViewModel() {
 
         viewModelScope.launch {
             recipeDao?.insertRecipe(recipe)
-            Log.d("CreateRecipeViewModel", "Saved recipe: $recipe")
+            Log.d("EditRecipeViewModel", "Saved recipe: $recipe")
+        }
+    }
+
+    fun readRecipeById(id: Long) {
+        viewModelScope.launch {
+            val recipe = recipeDao?.getRecipeById(id)
+            recipe?.let {
+                title.value = it.title
+                category.value = it.category
+                _ingredients.value = it.ingredients
+                _instructions.value = it.instructions
+            }
+        }
+    }
+
+    fun updateRecipe(id: Long) {
+        val updatedTitle = title.value ?: return
+        val updatedCategory = category.value ?: return
+        val updatedIngredients = _ingredients.value ?: emptyList()
+        val updatedInstructions = _instructions.value ?: emptyList()
+
+        val updatedRecipe = Recipe(
+            id = id,
+            title = updatedTitle,
+            category = updatedCategory,
+            ingredients = updatedIngredients,
+            instructions = updatedInstructions
+        )
+
+        viewModelScope.launch {
+            recipeDao?.updateRecipe(updatedRecipe)
+            Log.d("EditRecipeViewModel", "Updated recipe: $updatedRecipe")
         }
     }
 
