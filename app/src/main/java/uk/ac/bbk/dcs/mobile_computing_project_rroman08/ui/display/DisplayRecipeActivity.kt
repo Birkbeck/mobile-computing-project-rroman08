@@ -2,17 +2,15 @@ package uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.display
 
 import android.util.Log
 import android.os.Bundle
-import android.widget.TextView
-import android.widget.LinearLayout
 import androidx.activity.viewModels
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import uk.ac.bbk.dcs.mobile_computing_project_rroman08.R
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.Recipe
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeCategory
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDatabase
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityDisplayRecipeBinding
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.main.MainActivity
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.populateList
 
 class DisplayRecipeActivity : AppCompatActivity() {
 
@@ -71,19 +69,6 @@ class DisplayRecipeActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
-        }
-    }
-
-    private fun populateList(container: LinearLayout, list: List<String>) {
-        container.removeAllViews()
-        list.forEachIndexed { index, item ->
-            val textView = TextView(this).apply {
-                text = "${index + 1}. $item"
-                textSize = 16f
-                setTextColor(resources.getColor(R.color.dark_grey, theme))
-                setPadding(0, 4, 0, 4)
-            }
-            container.addView(textView)
         }
     }
 }

@@ -65,3 +65,16 @@ fun Context.showInputDialog(title: String, onInputConfirmed: (String) -> Unit) {
         .setNegativeButton("cancel") { dialog, _ -> dialog.dismiss() }
         .show()
 }
+
+fun Context.populateList(container: LinearLayout, list: List<String>) {
+    container.removeAllViews()
+    list.forEachIndexed { index, item ->
+        val textView = TextView(this).apply {
+            text = "${index + 1}. $item"
+            textSize = 16f
+            setTextColor(getColor(R.color.dark_grey))
+            setPadding(0, 4, 0, 4)
+        }
+        container.addView(textView)
+    }
+}
