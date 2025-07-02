@@ -3,7 +3,6 @@ package uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.edit
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import android.widget.LinearLayout
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.R
@@ -11,7 +10,9 @@ import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeCategory
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDatabase
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityEditRecipeBinding
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.main.MainActivity
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.createDiscardChangesButton
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.createItemView
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.updateListViews
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.showInputDialog
 
 class EditRecipeActivity : AppCompatActivity() {
@@ -38,6 +39,21 @@ class EditRecipeActivity : AppCompatActivity() {
         // Set header text dynamically
         if (recipeId != null) {
             binding.textViewEditRecipe.text = getString(R.string.edit_recipe)
+
+            // Add Discard Changes button dynamically above the Save button
+
+            // Assuming you have a LinearLayout with id button_container that wraps your buttons
+            val discardButton = createDiscardChangesButton(this) {
+                // Reload previously saved recipe data to discard changes
+                recipeId?.let { id ->
+                    viewModel.readRecipeById(id)
+                    android.widget.Toast.makeText(this, "Changes discarded", android.widget.Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            binding.buttonContainer.addView(discardButton, 0)
+
+
         } else {
             binding.textViewEditRecipe.text = getString(R.string.create_recipe)
         }
@@ -59,13 +75,13 @@ class EditRecipeActivity : AppCompatActivity() {
         }
 
         viewModel.ingredients.observe(this) { ingredients ->
-            updateListViews(ingredients, binding.linearLayoutIngredientsData) { ingredient ->
+            updateListViews(binding.linearLayoutIngredientsData, ingredients, ::createItemView) { ingredient ->
                 viewModel.removeIngredient(ingredient)
             }
         }
 
         viewModel.instructions.observe(this) { instructions ->
-            updateListViews(instructions, binding.linearLayoutInstructionsDataContainer) { instruction ->
+            updateListViews(binding.linearLayoutInstructionsDataContainer, instructions, ::createItemView) { instruction ->
                 viewModel.removeInstruction(instruction)
             }
         }
@@ -97,18 +113,6 @@ class EditRecipeActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
             finish()
-        }
-    }
-
-    private fun updateListViews(
-        items: List<String>,
-        container: LinearLayout,
-        onDelete: (String) -> Unit
-    ) {
-        container.removeAllViews()
-        items.forEach { item ->
-            val view = createItemView(item) { onDelete(item) }
-            container.addView(view)
         }
     }
 }

@@ -4,10 +4,12 @@ import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
 import android.view.Gravity
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.R
 
 fun Context.createItemView(text: String, onDelete: () -> Unit): LinearLayout {
@@ -76,5 +78,34 @@ fun Context.populateList(container: LinearLayout, list: List<String>) {
             setPadding(0, 4, 0, 4)
         }
         container.addView(textView)
+    }
+}
+
+fun Context.createDiscardChangesButton(context: Context, onDiscard: () -> Unit): Button {
+    return Button(context).apply {
+        text = context.getString(R.string.discard_changes)
+        setTextColor(ContextCompat.getColor(context, R.color.burgundy))
+        setBackgroundColor(ContextCompat.getColor(context, R.color.pink))
+        setPadding(32, 16, 32, 16)
+        setOnClickListener { onDiscard() }
+        val params = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        params.setMargins(16, 8, 16, 16)
+        layoutParams = params
+    }
+}
+
+fun Context.updateListViews(
+    container: LinearLayout,
+    items: List<String>,
+    createItemView: (String, () -> Unit) -> android.view.View,
+    onDelete: (String) -> Unit
+) {
+    container.removeAllViews()
+    items.forEach { item ->
+        val view = createItemView(item) { onDelete(item) }
+        container.addView(view)
     }
 }
