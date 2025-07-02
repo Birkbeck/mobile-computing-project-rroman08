@@ -1,18 +1,18 @@
 package uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.edit
 
 import android.content.Intent
-import android.R
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.R
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeCategory
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDatabase
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityEditRecipeBinding
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.main.MainActivity
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.createItemView
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.showInputDialog
-import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.main.MainActivity
 
 class EditRecipeActivity : AppCompatActivity() {
 
@@ -29,17 +29,24 @@ class EditRecipeActivity : AppCompatActivity() {
         val dao = RecipeDatabase.getInstance(applicationContext).recipeDao()
         viewModel.recipeDao = dao
 
-        // Setup category spinner
-        val categories = RecipeCategory.entries
-        val adapter = ArrayAdapter(this, R.layout.simple_spinner_item, categories)
-        adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
-        binding.spinnerCategory.adapter = adapter
-
         // Check if editing existing recipe
         recipeId = intent.getLongExtra("RECIPE_ID", -1L).takeIf { it != -1L }
         recipeId?.let { id ->
             viewModel.readRecipeById(id)
         }
+
+        // Set header text dynamically
+        if (recipeId != null) {
+            binding.textViewEditRecipe.text = getString(R.string.edit_recipe)
+        } else {
+            binding.textViewEditRecipe.text = getString(R.string.create_recipe)
+        }
+
+        // Setup category spinner
+        val categories = RecipeCategory.entries
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categories)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinnerCategory.adapter = adapter
 
         // Observe and populate fields
         viewModel.title.observe(this) {

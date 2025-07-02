@@ -41,7 +41,7 @@
 
                 <!-- Activity description -->
                 <TextView
-                    android:id="@+id/text_view_create_recipe"
+                    android:id="@+id/text_view_edit_recipe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
