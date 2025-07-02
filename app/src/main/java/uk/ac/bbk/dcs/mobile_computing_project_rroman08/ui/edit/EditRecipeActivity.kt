@@ -39,6 +39,7 @@ class EditRecipeActivity : AppCompatActivity() {
         // Set header text dynamically
         if (recipeId != null) {
             binding.textViewEditRecipe.text = getString(R.string.edit_recipe)
+            binding.saveButton.text = getString(R.string.save_changes)
 
             // Add Discard Changes button dynamically above the Save button
 
