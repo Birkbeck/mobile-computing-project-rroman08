@@ -12,7 +12,6 @@ import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeCategory
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDatabase
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityEditRecipeBinding
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.main.MainActivity
-import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.createDiscardChangesButton
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.createItemView
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.updateListViews
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.showInputDialog

@@ -157,18 +157,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:backgroundTint="@color/burgundy"
-                android:text="@string/save_changes"
-                android:textColor="@android:color/white" />
+                android:text="@string/save_changes" />
 
             <Button
                 android:id="@+id/button_discard_changes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:backgroundTint="@color/pink"
                 android:text="@string/discard_changes"
                 android:textColor="@color/burgundy"
-                android:visibility="gone" />
+                android:visibility="gone"
+                app:backgroundTint="@color/pink" />
 
         </LinearLayout>
 
