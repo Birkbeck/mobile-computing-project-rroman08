@@ -1,5 +1,6 @@
 package uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.edit
 
+import android.content.Intent
 import android.R
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -11,6 +12,7 @@ import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDatabase
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityEditRecipeBinding
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.createItemView
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.showInputDialog
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.main.MainActivity
 
 class EditRecipeActivity : AppCompatActivity() {
 
@@ -84,6 +86,9 @@ class EditRecipeActivity : AppCompatActivity() {
                 viewModel.saveRecipe()
             }
 
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
             finish()
         }
     }
