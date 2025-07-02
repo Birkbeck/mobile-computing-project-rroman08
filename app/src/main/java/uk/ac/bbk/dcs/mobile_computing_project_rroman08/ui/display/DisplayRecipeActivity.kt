@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.widget.TextView
 import android.widget.LinearLayout
 import androidx.activity.viewModels
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.R
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.Recipe
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeCategory
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDatabase
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityDisplayRecipeBinding
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.main.MainActivity
 
 class DisplayRecipeActivity : AppCompatActivity() {
 
@@ -52,6 +54,22 @@ class DisplayRecipeActivity : AppCompatActivity() {
                 populateList(binding.linearLayoutInstructionsData, recipe.instructions)
             } else {
                 Log.e("ViewRecipeActivity", "Recipe was null")
+            }
+        }
+
+        // Delete button logic
+        binding.buttonDeleteRecipe.setOnClickListener {
+            viewModel.deleteRecipe()
+        }
+
+        // Observe deletion completion and navigate back to MainActivity
+        viewModel.deleteComplete.observe(this) { deleted ->
+            if (deleted) {
+                val intent = Intent(this, MainActivity::class.java)
+                // Use Intent.FLAG_ACTIVITY_CLEAR_TOP to avoid stacking activities
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+                finish()
             }
         }
     }

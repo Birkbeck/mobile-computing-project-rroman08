@@ -14,6 +14,9 @@ class DisplayRecipeViewModel : ViewModel() {
     private val _recipe = MutableLiveData<Recipe?>()
     val recipe: LiveData<Recipe> = _recipe as LiveData<Recipe>
 
+    private val _deleteComplete = MutableLiveData<Boolean>()
+    val deleteComplete: LiveData<Boolean> = _deleteComplete
+
     var recipeDao: RecipeDao? = null
 
     fun readRecipeById(id: Long) {
@@ -31,6 +34,19 @@ class DisplayRecipeViewModel : ViewModel() {
 //            recipeDao?.let {
 //                _recipe.value = it.getRecipeById(id)
 //            }
+        }
+    }
+
+    fun deleteRecipe() {
+        viewModelScope.launch {
+            try {
+                recipe.value?.let {
+                    recipeDao?.deleteRecipe(it)
+                    _deleteComplete.postValue(true)
+                }
+            } catch (e: Exception) {
+                Log.e("ViewRecipeVM", "Failed to delete recipe: ${e.message}")
+            }
         }
     }
 }
