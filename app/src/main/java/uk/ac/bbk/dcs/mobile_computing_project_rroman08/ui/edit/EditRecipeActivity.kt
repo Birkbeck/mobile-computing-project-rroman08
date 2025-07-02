@@ -1,29 +1,31 @@
-package uk.ac.bbk.dcs.mobile_computing_project_rroman08
+package uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.edit
 
+import android.R
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeCategory
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDatabase
-import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityCreateRecipeBinding
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityEditRecipeBinding
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.createItemView
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.showInputDialog
 
-class CreateRecipeActivity : AppCompatActivity() {
+class EditRecipeActivity : AppCompatActivity() {
 
-    private val viewModel: CreateRecipeViewModel by viewModels()
-    private lateinit var binding: ActivityCreateRecipeBinding
+    private val viewModel: EditRecipeViewModel by viewModels()
+    private lateinit var binding: ActivityEditRecipeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCreateRecipeBinding.inflate(layoutInflater)
+        binding = ActivityEditRecipeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Setup spinner
         val categories = RecipeCategory.entries
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categories)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val adapter = ArrayAdapter(this, R.layout.simple_spinner_item, categories)
+        adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
         binding.spinnerCategory.adapter = adapter
 
         val dao = RecipeDatabase.getInstance(applicationContext).recipeDao()
@@ -62,7 +64,7 @@ class CreateRecipeActivity : AppCompatActivity() {
 
     private fun updateListViews(
         items: List<String>,
-        container: android.widget.LinearLayout,
+        container: LinearLayout,
         onDelete: (String) -> Unit
     ) {
         container.removeAllViews()

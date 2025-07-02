@@ -1,4 +1,4 @@
-package uk.ac.bbk.dcs.mobile_computing_project_rroman08
+package uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.edit
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -10,7 +10,7 @@ import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.Recipe
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeCategory
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDao
 
-class CreateRecipeViewModel : ViewModel() {
+class EditRecipeViewModel : ViewModel() {
 
     private val _ingredients = MutableLiveData<List<String>>(emptyList())
     val ingredients: LiveData<List<String>> = _ingredients

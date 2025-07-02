@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import uk.ac.bbk.dcs.mobile_computing_project_rroman08.CreateRecipeActivity
+import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.edit.EditRecipeActivity
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDatabase
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityMainBinding
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.display.DisplayRecipeActivity
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         // Create recipe button navigates to other activity
         binding.buttonCreateRecipe.setOnClickListener {
-            val intent = Intent(this, CreateRecipeActivity::class.java)
+            val intent = Intent(this, EditRecipeActivity::class.java)
             startActivity(intent)
         }
 
