@@ -2,7 +2,9 @@ package uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.edit
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.R
@@ -36,27 +38,26 @@ class EditRecipeActivity : AppCompatActivity() {
             viewModel.readRecipeById(id)
         }
 
-        // Set header text dynamically
+        val discardButton = binding.buttonDiscardChanges
+
         if (recipeId != null) {
+            // Edit mode
             binding.textViewEditRecipe.text = getString(R.string.edit_recipe)
             binding.saveButton.text = getString(R.string.save_changes)
 
-            // Add Discard Changes button dynamically above the Save button
-
-            // Assuming you have a LinearLayout with id button_container that wraps your buttons
-            val discardButton = createDiscardChangesButton(this) {
-                // Reload previously saved recipe data to discard changes
+            discardButton.visibility = View.VISIBLE
+            discardButton.setOnClickListener {
                 recipeId?.let { id ->
                     viewModel.readRecipeById(id)
-                    android.widget.Toast.makeText(this, "Changes discarded", android.widget.Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Changes discarded", Toast.LENGTH_SHORT).show()
                 }
             }
 
-            binding.buttonContainer.addView(discardButton, 0)
-
-
         } else {
+            // Create mode
             binding.textViewEditRecipe.text = getString(R.string.create_recipe)
+            binding.saveButton.text = getString(R.string.save_recipe) // optional
+            discardButton.visibility = View.GONE
         }
 
         // Setup category spinner
