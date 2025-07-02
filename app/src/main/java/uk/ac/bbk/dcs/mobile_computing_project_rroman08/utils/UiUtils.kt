@@ -82,61 +82,6 @@ fun Context.populateList(container: LinearLayout, list: List<String>) {
     }
 }
 
-//fun Context.createDiscardChangesButton(context: Context, onDiscard: () -> Unit): Button {
-//    val themedContext = ContextThemeWrapper(context, R.style.Widget_MaterialComponents_Button)
-//
-//    return Button(themedContext).apply {
-//        text = context.getString(R.string.discard_changes)
-//        isAllCaps = false // override default
-//        setTextColor(ContextCompat.getColor(context, R.color.burgundy))
-//        background = ContextCompat.getDrawable(context, R.drawable.rounded_button_pink)
-//        layoutParams = LinearLayout.LayoutParams(
-//            LinearLayout.LayoutParams.MATCH_PARENT,
-//            LinearLayout.LayoutParams.WRAP_CONTENT
-//        ).apply {
-//            setMargins(16, 8, 16, 16)
-//        }
-//        setOnClickListener { onDiscard() }
-//    }
-//}
-
-fun Context.createDiscardChangesButton(context: Context, onDiscard: () -> Unit): Button {
-    return Button(context).apply {
-        text = context.getString(R.string.discard_changes)
-        setTextColor(ContextCompat.getColor(context, R.color.burgundy))
-        setBackgroundColor(ContextCompat.getColor(context, R.color.pink))
-        setPadding(32, 16, 32, 16)
-        setOnClickListener { onDiscard() }
-
-        layoutParams = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.MATCH_PARENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT
-        ).apply {
-            setMargins(16, 8, 16, 16)
-        }
-    }
-}
-
-//fun Context.createDiscardChangesButton(context: Context, onDiscard: () -> Unit): Button {
-//    return Button(context).apply {
-//        text = context.getString(R.string.discard_changes)
-//        setTextColor(ContextCompat.getColor(context, R.color.burgundy))
-//        backgroundTintList = ContextCompat.getColorStateList(context, R.color.pink)
-//        textSize = 16f
-//        isAllCaps = false // Optional: match Save button styling
-//        setPadding(0, 24.dp, 0, 24.dp)
-//
-//        layoutParams = LinearLayout.LayoutParams(
-//            LinearLayout.LayoutParams.MATCH_PARENT,
-//            LinearLayout.LayoutParams.WRAP_CONTENT
-//        ).apply {
-//            setMargins(0, 0, 0, 16.dp)
-//        }
-//
-//        setOnClickListener { onDiscard() }
-//    }
-//}
-
 fun Context.updateListViews(
     container: LinearLayout,
     items: List<String>,
