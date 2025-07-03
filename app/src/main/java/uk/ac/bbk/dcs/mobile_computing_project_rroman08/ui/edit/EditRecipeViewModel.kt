@@ -10,6 +10,15 @@ import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.Recipe
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeCategory
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDao
 
+/**
+ * ViewModel for creating and editing recipes.
+ *
+ * Exposes LiveData for:
+ * - title and category (MutableLiveData)
+ * - ingredient and instruction lists
+ *
+ * Handles insert, update, and read operations via the DAO.
+ */
 class EditRecipeViewModel : ViewModel() {
 
     private val _ingredients = MutableLiveData<List<String>>(emptyList())
@@ -22,6 +31,9 @@ class EditRecipeViewModel : ViewModel() {
 
     var recipeDao: RecipeDao? = null
 
+    /**
+     * Inserts a new Recipe entity into the db.
+     */
     fun saveRecipe() {
         val currentTitle = title.value ?: return
         val currentCategory = category.value ?: return
@@ -41,6 +53,9 @@ class EditRecipeViewModel : ViewModel() {
         }
     }
 
+    /**
+     * Loads an existing Recipe by given ID and populates LiveData fields.
+     */
     fun readRecipeById(id: Long) {
         viewModelScope.launch {
             val recipe = recipeDao?.getRecipeById(id)
@@ -53,6 +68,9 @@ class EditRecipeViewModel : ViewModel() {
         }
     }
 
+    /**
+     * Updates an existing Recipe entry by given ID.
+     */
     fun updateRecipe(id: Long) {
         val updatedTitle = title.value ?: return
         val updatedCategory = category.value ?: return
@@ -73,26 +91,26 @@ class EditRecipeViewModel : ViewModel() {
         }
     }
 
-    // Add ingredient
+    /** Adds a new item to the ingredients list if not empty (non-blank). */
     fun addIngredient(ingredient: String) {
         if (ingredient.isNotBlank()) {
             _ingredients.value = _ingredients.value?.plus(ingredient)
         }
     }
 
-    // Remove ingredient
+    /** Removes a specified ingredient from the list. */
     fun removeIngredient(ingredient: String) {
         _ingredients.value = _ingredients.value?.filter { it != ingredient }
     }
 
-    // Add instruction
+    /** Adds a new item to the instructions list if not empty (non-blank). */
     fun addInstruction(instruction: String) {
         if (instruction.isNotBlank()) {
             _instructions.value = _instructions.value?.plus(instruction)
         }
     }
 
-    // Remove instruction
+    /** Removes a specified instruction from the list. */
     fun removeInstruction(instruction: String) {
         _instructions.value = _instructions.value?.filter { it != instruction }
     }
