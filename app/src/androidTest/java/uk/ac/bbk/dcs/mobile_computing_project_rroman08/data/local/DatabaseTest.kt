@@ -58,7 +58,7 @@ class DatabaseTest {
     @Test
     @Throws(Exception::class)
     fun insertAndRetrieve() = runBlocking {
-        // .insertRecipe() & getAllRecipes() are suspend functions, hence the runBlocking wrapper
+        // .insertRecipe() & getAllRecipes() are suspend functions, hence the runBlocking{} wrapper
         testRecipes.forEach { recipe ->
             recipeDao.insertRecipe(recipe)
         }
