@@ -13,6 +13,10 @@ import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.edit.EditRecipeActivit
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.main.MainActivity
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.utils.populateList
 
+/**
+ * Activity responsible for displaying a single recipe's details:
+ * title, category, ingredients, and instructions. Has buttons for editing and deletion.
+ */
 class DisplayRecipeActivity : AppCompatActivity() {
 
     private val viewModel: DisplayRecipeViewModel by viewModels()
@@ -23,7 +27,7 @@ class DisplayRecipeActivity : AppCompatActivity() {
         binding = ActivityDisplayRecipeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Empty placeholder recipe to avoid null binding crash
+        // Empty placeholder recipe to avoid null binding crashes
         binding.recipe = Recipe(
             id = 0,
             title = "",
@@ -32,7 +36,7 @@ class DisplayRecipeActivity : AppCompatActivity() {
             instructions = emptyList()
         )
 
-        // Inject DAO
+        // Inject DAO into ViewModel
         val dao = RecipeDatabase.getInstance(applicationContext).recipeDao()
         viewModel.recipeDao = dao
 
@@ -56,19 +60,19 @@ class DisplayRecipeActivity : AppCompatActivity() {
             }
         }
 
-        // Edit/update button logic
+        // Launch edit/update activity
         binding.buttonEditRecipe.setOnClickListener {
             val intent = Intent(this, EditRecipeActivity::class.java)
-            intent.putExtra("RECIPE_ID", recipeId) // Use the same ID
+            intent.putExtra("RECIPE_ID", recipeId)  // use the same ID to send along
             startActivity(intent)
         }
 
-        // Delete button logic
+        // Trigger recipe deletion logic
         binding.buttonDeleteRecipe.setOnClickListener {
             viewModel.deleteRecipe()
         }
 
-        // Observe deletion completion and navigate back to MainActivity
+        // Navigate back to MainActivity once deletion is complete
         viewModel.deleteComplete.observe(this) { deleted ->
             if (deleted) {
                 val intent = Intent(this, MainActivity::class.java)
