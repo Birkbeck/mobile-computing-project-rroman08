@@ -10,15 +10,15 @@ import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.converters.Converter
 /**
  * Singleton Room database class for persistence storage of [Recipe] entities.
  *
- * - Uses [RecipeDao] for data access.
- * - Applies [Converters] to handle custom types (e.g., List<String>, RecipeCategory).
+ * Uses [RecipeDao] for data access.
+ * Applies [Converters] to handle custom types (List<String>, RecipeCategory).
  */
 @Database(entities = [Recipe::class], version = 1)
 @TypeConverters(Converters::class)
 abstract class RecipeDatabase : RoomDatabase() {
 
     /**
-     * Provides access to the [RecipeDao] interface for db operations.
+     * Enables access to the [RecipeDao] interface for db operations.
      */
     abstract fun recipeDao(): RecipeDao
 
