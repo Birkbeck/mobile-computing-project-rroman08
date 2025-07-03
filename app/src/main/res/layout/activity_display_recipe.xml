@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <!-- Recipe class for data binding -->
         <variable
             name="recipe"
             type="uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.Recipe" />
     </data>
 
+    <!-- Inside a scrollview for user to scroll down to see all content on screen -->
     <ScrollView
         android:id="@+id/main"
         android:layout_width="match_parent"
@@ -35,7 +36,7 @@
                 android:text="@string/app_title"
                 android:textSize="32sp" />
 
-            <!-- Recipe title -->
+            <!-- Recipe title display -->
             <TextView
                 android:id="@+id/text_view_recipe_title"
                 android:layout_width="wrap_content"
@@ -47,7 +48,7 @@
                 android:textSize="24sp"
                 tools:text="Mountain Goat Curry" />
 
-            <!-- Recipe category -->
+            <!-- Recipe category display -->
             <TextView
                 android:id="@+id/text_view_category"
                 android:layout_width="wrap_content"
@@ -60,7 +61,7 @@
                 android:textStyle="italic"
                 tools:text="Lunch" />
 
-            <!-- List of ingredients section -->
+            <!-- List of ingredients section title -->
             <TextView
                 android:id="@+id/text_view_ingredients"
                 android:layout_width="wrap_content"
@@ -71,13 +72,14 @@
                 android:textColor="@color/dark_grey"
                 android:textSize="20sp" />
 
+            <!-- Layout that contains lists of ingredients -->
             <LinearLayout
                 android:id="@+id/linear_layout_ingredients_data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
 
-            <!-- List of instructions section -->
+            <!-- List of instructions section title -->
             <TextView
                 android:id="@+id/text_view_instructions"
                 android:layout_width="wrap_content"
@@ -89,13 +91,14 @@
                 android:textColor="@color/dark_grey"
                 android:textSize="20sp" />
 
+            <!-- Layout that contains lists of instructions -->
             <LinearLayout
                 android:id="@+id/linear_layout_instructions_data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
 
-            <!-- Edit recipe button -->
+            <!-- Edit recipe button: navigates to edit activity -->
             <Button
                 android:id="@+id/button_edit_recipe"
                 android:layout_width="match_parent"
@@ -105,7 +108,7 @@
                 android:textColor="@color/burgundy"
                 app:backgroundTint="@color/pink" />
 
-            <!-- Delete recipe button -->
+            <!-- Delete recipe button: deletes recipe from db -->
             <Button
                 android:id="@+id/button_delete_recipe"
                 android:layout_width="match_parent"

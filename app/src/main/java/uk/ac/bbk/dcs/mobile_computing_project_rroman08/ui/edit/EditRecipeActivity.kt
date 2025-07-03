@@ -36,7 +36,8 @@ class EditRecipeActivity : AppCompatActivity() {
         val dao = RecipeDatabase.getInstance(applicationContext).recipeDao()
         viewModel.recipeDao = dao
 
-        // Check if editing existing recipe, i.e., an ID was passed along
+        // Check if editing existing recipe, i.e., an ID was passed along. If so, activity displays
+        // 'editing mode', if no ID is passed in the intent, it displays 'create recipe mode'
         recipeId = intent.getLongExtra("RECIPE_ID", -1L).takeIf { it != -1L }
         recipeId?.let { id ->
             viewModel.readRecipeById(id)

@@ -5,12 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <!-- Recipe class for data binding -->
         <variable
             name="recipe"
             type="uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.Recipe" />
     </data>
 
+    <!-- Individual card view items that are displayed in the recycler view in the main activity -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,7 +57,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Category" />
 
-                <!-- See details button -->
+                <!-- See details button, that navigates to display recipe activity -->
                 <Button
                     android:id="@+id/button_see_recipe"
                     android:layout_width="wrap_content"

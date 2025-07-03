@@ -39,7 +39,7 @@
                     android:text="@string/app_title"
                     android:textSize="32sp" />
 
-                <!-- Activity description -->
+                <!-- Activity description, that changes text, depending on 'mode' -->
                 <TextView
                     android:id="@+id/text_view_edit_recipe"
                     android:layout_width="wrap_content"
@@ -65,7 +65,7 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Category selection spinner -->
+                <!-- Category selection spinner title -->
                 <TextView
                     android:id="@+id/text_view_category"
                     android:layout_width="wrap_content"
@@ -77,13 +77,14 @@
                     android:textSize="20sp"
                     android:textStyle="italic" />
 
+                <!-- Spinner with drop down items -->
                 <Spinner
                     android:id="@+id/spinner_category"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="28dp" />
 
-                <!-- Cooking ingredients section -->
+                <!-- List of ingredients section title -->
                 <TextView
                     android:id="@+id/text_view_ingredients"
                     android:layout_width="wrap_content"
@@ -94,12 +95,14 @@
                     android:textColor="@color/dark_grey"
                     android:textSize="20sp" />
 
+                <!-- Layout that contains lists of ingredients that can be dynamically added -->
                 <LinearLayout
                     android:id="@+id/linear_layout_ingredients_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical" />
 
+                <!-- Button to add an ingredients to linear layout above -->
                 <Button
                     android:id="@+id/button_add_ingredients"
                     android:layout_width="wrap_content"
@@ -109,7 +112,7 @@
                     android:textColor="@color/burgundy"
                     app:backgroundTint="@color/pink" />
 
-                <!-- Cooking instructions section -->
+                <!-- List of instructions section title -->
                 <TextView
                     android:id="@+id/text_view_instructions"
                     android:layout_width="wrap_content"
@@ -121,12 +124,14 @@
                     android:textColor="@color/dark_grey"
                     android:textSize="20sp" />
 
+                <!-- Layout that contains lists of instructions that can be dynamically added -->
                 <LinearLayout
                     android:id="@+id/linear_layout_instructions_data_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical" />
 
+                <!-- Button to add an instructions to linear layout above -->
                 <Button
                     android:id="@+id/button_add_instructions"
                     android:layout_width="wrap_content"
@@ -140,7 +145,7 @@
 
         </ScrollView>
 
-        <!-- Container to hold save button and discard button dynamically -->
+        <!-- Container to hold save button and discard button -->
         <LinearLayout
             android:id="@+id/button_container"
             android:layout_width="0dp"
@@ -152,6 +157,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
+            <!-- Button to save new recipe or update recipe, changes name depending on 'mode' -->
             <Button
                 android:id="@+id/save_button"
                 android:layout_width="match_parent"
@@ -159,6 +165,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/save_changes" />
 
+            <!-- Dependent on 'mode', this button is displayed or not -->
             <Button
                 android:id="@+id/button_discard_changes"
                 android:layout_width="match_parent"
