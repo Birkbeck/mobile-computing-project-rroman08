@@ -88,7 +88,7 @@ class EditRecipeActivity : AppCompatActivity() {
                 binding.linearLayoutIngredientsData,  // the 'container' layout where items will be added
                 ingredients,  // current list of items
                 ::createItemView  // fn reference that creates the view for each item
-                // Remove item when 'trash' icon is clicked
+                // Remove item when 'bin can' icon is clicked
             ) { ingredient -> viewModel.removeIngredient(ingredient) }
         }
 
