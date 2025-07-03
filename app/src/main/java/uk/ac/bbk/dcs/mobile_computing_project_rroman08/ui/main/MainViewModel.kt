@@ -9,6 +9,11 @@ import kotlinx.coroutines.launch
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.Recipe
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDao
 
+/**
+ * ViewModel for MainActivity.
+ *
+ * Manages fetching all recipes from the database and exposing via LiveData.
+ */
 class MainViewModel : ViewModel() {
 
     private val _recipes = MutableLiveData(listOf<Recipe>())
@@ -16,6 +21,7 @@ class MainViewModel : ViewModel() {
 
     var recipeDao: RecipeDao? = null
 
+    /** Reads all recipes and updates LiveData, logging counts for debugging purposes. */
     fun readAllRecipes() {
         viewModelScope.launch {
             recipeDao?.let {

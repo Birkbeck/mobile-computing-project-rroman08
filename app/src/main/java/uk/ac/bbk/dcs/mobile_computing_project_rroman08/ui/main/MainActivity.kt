@@ -10,7 +10,11 @@ import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDatabase
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.databinding.ActivityMainBinding
 import uk.ac.bbk.dcs.mobile_computing_project_rroman08.ui.display.DisplayRecipeActivity
 
-
+/**
+ * Main screen/UI showing all recipes in a RecyclerView.
+ * Clicking the 'see recipe' button on a item opens it. Also there is a button that
+ * allows for the creation of new recipes.
+ */
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels()
@@ -21,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Adapter with click listener to launch ViewRecipeActivity
+        // Setup RecyclerView with click listener to launch DisplayRecipeActivity
         val adapter = RecipeAdapter { id ->
             val intent = Intent(this, DisplayRecipeActivity::class.java)
             intent.putExtra("RECIPE_ID", id)
@@ -30,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerViewData.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewData.adapter = adapter
 
-        // Create recipe button navigates to other activity
+        // Navigate to create recipe screen
         binding.buttonCreateRecipe.setOnClickListener {
             val intent = Intent(this, EditRecipeActivity::class.java)
             startActivity(intent)
@@ -45,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /** Refreshes recipe list on resume to reflect potential changes. */
     override fun onResume() {
         super.onResume()
         viewModel.readAllRecipes()
