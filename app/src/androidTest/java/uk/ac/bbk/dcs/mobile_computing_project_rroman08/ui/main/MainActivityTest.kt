@@ -26,8 +26,13 @@ import uk.ac.bbk.dcs.mobile_computing_project_rroman08.data.local.RecipeDatabase
 class MainActivityTest {
 
     @Before
-    fun setup() {
+    fun setup() = runBlocking {
         Intents.init()
+
+        // Clear persistent DB
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        val dao = RecipeDatabase.getInstance(context).recipeDao()
+        dao.clearAll()
     }
 
     @After

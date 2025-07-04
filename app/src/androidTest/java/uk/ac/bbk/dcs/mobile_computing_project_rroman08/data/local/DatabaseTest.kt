@@ -43,12 +43,14 @@ class DatabaseTest {
     )
 
     @Before
-    fun createDatabase() {
+    fun createDatabase() = runBlocking {
         val context: Context = ApplicationProvider.getApplicationContext()
         recipeDatabase = Room.inMemoryDatabaseBuilder(context, RecipeDatabase::class.java)
             .allowMainThreadQueries()
             .build()
         recipeDao = recipeDatabase.recipeDao()
+
+        recipeDao.clearAll()
     }
 
     @After

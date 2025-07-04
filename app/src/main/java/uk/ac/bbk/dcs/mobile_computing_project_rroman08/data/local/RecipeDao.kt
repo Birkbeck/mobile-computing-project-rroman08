@@ -53,6 +53,9 @@ interface RecipeDao {
     @Delete
     suspend fun deleteRecipe(recipe: Recipe)
 
+    @Query("DELETE FROM recipes")
+    suspend fun clearAll()
+
     // IMPLEMENT LATER IN UI, IF THERE IS TIME REMAINING
 //    @Query("SELECT * FROM recipes WHERE category = :category ORDER BY title ASC")
 //    fun getRecipesByCategory(category: RecipeCategory): List<RecipeEntity>
